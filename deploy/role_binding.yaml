@@ -1,0 +1,11 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: example-k8s-operator-memcached
+subjects:
+- kind: ServiceAccount
+  name: example-k8s-operator-memcached
+roleRef:
+  kind: Role
+  name: example-k8s-operator-memcached
+  apiGroup: rbac.authorization.k8s.io

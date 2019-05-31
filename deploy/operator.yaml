@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-k8s-operator-memcached
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: example-k8s-operator-memcached
+  template:
+    metadata:
+      labels:
+        name: example-k8s-operator-memcached
+    spec:
+      serviceAccountName: example-k8s-operator-memcached
+      containers:
+        - name: example-k8s-operator-memcached
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - example-k8s-operator-memcached
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "example-k8s-operator-memcached"
