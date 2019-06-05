@@ -16,7 +16,7 @@ spec:
       containers:
         - name: example-k8s-operator-memcached
           # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: supsup5642/memcached-operator:v0.0.1
           command:
           - example-k8s-operator-memcached
           imagePullPolicy: Always
